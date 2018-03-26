@@ -1,0 +1,13 @@
+.c-btn {
+  background-color: $action-colour;
+  border-radius: 2.5px;
+  color: $bg-colour;
+  padding: 5px 10px;
+  margin: 5px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($action-colour, 5%);
+    color: $bg-colour;
+  }
+}

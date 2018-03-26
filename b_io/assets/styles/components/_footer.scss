@@ -1,0 +1,60 @@
+.c-footer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+
+  &__inner {
+    border-top: 1px solid lighten($text-colour, 75%);
+    padding: .5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__top {
+    @include grid-container;
+  }
+
+  &__name,
+  &__icon-group {
+    @include grid-column(5);
+    margin-top: 1rem;
+  }
+
+  &__avatar {
+    @include grid-column(2);
+
+    left: 50%;
+    overflow: hidden;
+    padding: 6px;
+    top: -2em;
+    z-index: 2;
+  }
+
+  &__avatar-image {
+    width: 4em;
+    height: 4em;
+    border-radius: .3em;
+    background-color: $action-colour;
+    padding: .3em .3em 0;
+  }
+
+  &__name {
+    font-size: 1em;
+    text-align: right;
+  }
+
+  &__icon {
+    text-decoration: none;
+  }
+
+  &__icon-image {
+    margin-top: -.5rem;
+    margin-right: .5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  &__btn-group {
+    text-align: center;
+  }
+}

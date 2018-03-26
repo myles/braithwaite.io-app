@@ -1,0 +1,19 @@
+@include font-face('IBM Plex Mono', 'fonts/IBMPlexMono-Regular') {
+  font-style: normal;
+  font-weight: 400;
+}
+
+@include font-face('IBM Plex Sans', 'fonts/IBMPlexSans-Regular') {
+  font-style: normal;
+  font-weight: 400;
+}
+
+@include font-face('IBM Plex Serif', 'fonts/IBMPlexSerif-Regular') {
+  font-style: normal;
+  font-weight: 400;
+}
+
+@include font-face('IBM Plex Serif', 'fonts/IBMPlexSans-Bold') {
+  font-style: bold;
+  font-weight: 500;
+}

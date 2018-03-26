@@ -1,0 +1,24 @@
+.c-site-title {
+  @extend %container;
+
+  font-size: modular-scale(2);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  &__link {
+    color: $action-colour;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__heading {
+    font-weight: normal;
+  }
+
+  &__io {
+    font-weight: bold;
+  }
+}

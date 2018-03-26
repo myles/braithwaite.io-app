@@ -1,0 +1,35 @@
+.b-home {
+  @extend %container;
+
+  // &__notebook-list {}
+
+  &__notebook-link {
+    color: $text-colour;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid darken($bg-colour, 5%);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__notebook-title {
+    margin: 0;
+  }
+
+  &__notebook-date {
+    margin: 0;
+  }
+
+  &__notebook-summary {
+    margin-top: .5rem;
+    margin-bottom: 0;
+  }
+}

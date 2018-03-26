@@ -1,0 +1,43 @@
+html {
+  background: $action-colour;
+  font-family: $font-family-serif;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+body {
+  background-color: $bg-colour;
+  color: $text-colour;
+  min-height: 100vh;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: modular-scale(1);
+  line-height: 1.1;
+  margin: 0 0 $spacing / 2;
+}
+
+p {
+  margin: 0 0 $spacing / 2;
+}
+
+a {
+  color: $action-colour;
+  text-decoration-skip: ink;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: shade($action-colour, 25%);
+  }
+
+  &:focus {
+    outline: 3px solid transparentize($action-colour, 0.4);
+    outline-offset: 2px;
+  }
+}

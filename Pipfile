@@ -1,0 +1,20 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+Flask = "*"
+nbconvert = "*"
+Flask-DebugToolbar = "*"
+toml = "*"
+feedgenerator = "*"
+django-jsonfeed = "*"
+Frozen-Flask = "*"
+
+
+[dev-packages]
+

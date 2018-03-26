@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ notebook.name }}{% endblock %}
+
+{% block extra_head %}
+    {% if notebook.hidden %}<meta name="robots" content="noindex">{% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="b-notebook h-entry">
+    <div class="b-notebook__header">
+        <h1 class="b-notebook__title p-name">
+            {{ notebook.name }}
+        </h1>
+
+        <h2 class="b-notebook__date dt-published" datetime="{{ notebook.published.isoformat() }}">{{ notebook.published.strftime('%d %B %Y') }}</h2>
+
+        {% if notebook.summary %}
+        <p class="b-notebook__summary p-summary">
+            {{ notebook.summary | safe }}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="b-notebook__content e-content">
+        {{ notebook.content | safe }}
+    </div>
+</div>
+{% endblock %}

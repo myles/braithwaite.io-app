@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    {% block head %}
+        <meta charset="utf-8">
+
+        <title>{% block title %}Braithwaite I/O{% endblock %}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        <link rel="icon" size="32x32" href="{{ url_for('static', filename='favicon.png')}}">
+
+        <link rel="pingback" href="https://webmention.io/braithwaite.io/xmlrpc">
+        <link rel="webmention" href="https://webmention.io/braithwaite.io/webmention">
+
+        <link rel="alternate" title="ATOM Feed" type="application/atom+xml" href="https://braithwaite.io{{ url_for('views.feed', feed_type='xml') }}">
+        <link rel="alternate" title="JSON Feed" type="application/json" href="https://braithwaite.io{{ url_for('views.feed', feed_type='json') }}">
+
+        {% block extra_head %}{% endblock %}
+    {% endblock %}
+    </head>
+    <body class="b-io">
+        <div class="c-site-title">
+            <a href="{{ url_for('views.index') }}" class="c-site-title__link">
+                <h1 class="c-site-title__heading">
+                    <span class"c-site-title__braithwaite">
+                        Braithwaite
+                    </span>
+
+                    <span class="c-site-title__io">I/O</span>
+                </h1>
+            </a>
+        </div>
+
+        <div class="c-page">
+            {% block body %}{% endblock %}
+        </div>
+
+        <div class="c-footer h-card">
+            <div class="c-footer__inner">
+                <div class="c-footer__top">
+                    <h2 class="c-footer__name p-name">
+                        Myles Braithwaite
+                    </h2>
+
+                    <div class="c-footer__avatar">
+                        <img class="c-footer__avatar-image u-photo" src="{{ url_for('static', filename='avatar.svg') }}" alt="Myles Braithwaite's Avatar">
+                    </div>
+
+                    <div class="c-footer__icon-group">
+                        <a class="c-footer__icon c-footer__icon--twitter u-url" rel="me" href="https://twitter.com/mylesb"><img class="c-footer__icon-image" src="{{ url_for('static', filename='twitter.svg') }}" alt="Twitter"></a>
+
+                        <a class="c-footer__icon c-footer__icon--github u-url" rel="me" href="https://github.com/myles"><img class="c-footer__icon-image" src="{{ url_for('static', filename='github.svg') }}" alt="GitHub"></a>
+
+                        <a class="c-footer__icon c-footer__icon--facebook u-url" rel="me" href="https://facebook.com/mylesbraithwaite"><img class="c-footer__icon-image" src="{{ url_for('static', filename='facebook.svg') }}" alt="Facebook"></a>
+
+                        <a class="c-footer__icon c-footer__icon--github u-url" rel="me" href="https://linkedin.com/in/mylesbraithwaite"><img class="c-footer__icon-image" src="{{ url_for('static', filename='linkedin.svg') }}" alt="LinkedIn"></a>
+                    </div>
+                </div>
+
+                <div class="c-footer__copy">
+                    <p>Myles Braithwaite lives in <span class="p-locality">Toronto</span> where he runs a small consulting company called <a class="p-org h-card" href="https://monkeyinyoursoul.com/">Monkey in your Soul</a> (you should hire him).</p>
+                </div>
+
+                <div class="c-footer__btn-group">
+                    <a class="c-btn u-url" rel="me" href="https://mylesbraithwaite.com/">Blog</a>
+                    <a class="c-btn u-url" rel="me" href="https://mylesb.ca/">Homepage</a>
+                    <a class="c-btn u-email" rel="me" href="mailto:myles@braithwaite.io">Email</a>
+                </div>
+            </div>
+        </div>
+
+        {% block foot %}
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        {% block extra_foot %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>

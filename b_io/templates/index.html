@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="b-home">
+        <div class="b-home__notebook-list">
+            {% for notebook in notebooks %}
+            <a class="b-home__notebook-link" href="{{ notebook.url }}">
+                <h2 class="b-home__notebook-title">{{ notebook.name }}</h2>
+                <p class="b-home__notebook-date">{{ notebook.published.strftime('%d %B %Y') }}</p>
+                <p class="b-home__notebook-summary">{{ notebook.summary }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

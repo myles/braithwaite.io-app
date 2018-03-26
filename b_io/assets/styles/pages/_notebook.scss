@@ -1,0 +1,45 @@
+.b-notebook {
+  &__header {
+    @extend %container;
+
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  &__title,
+  &__date,
+  &__summary {
+    margin: 0;
+  }
+
+  &__title,
+  &__date {
+    line-height: 1;
+  }
+
+  &__title {
+    font-size: modular-scale(8);
+  }
+
+  &__date {
+    font-size: modular-scale(6);
+    font-weight: normal;
+  }
+
+  &__summary {
+    font-size: modular-scale(4);
+    margin-top: 1rem;
+  }
+
+  &__content {
+    @extend %jupyter-notebook;
+
+    font-family: $font-family-sans;
+
+    pre {
+      font-family: $font-family-mono;
+    }
+  }
+
+  // &__footer {}
+}

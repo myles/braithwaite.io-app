@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "bourbon": "^5.0.0",
+    "bourbon-neat": "^2.1.0",
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-commonjs": "^0.1.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.2",
+    "gulp-ttf2eot": "^1.1.2",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttf2woff2": "^2.0.2",
+    "run-sequence": "^2.2.0",
+    "shave": "^2.1.3"
+  }
+}

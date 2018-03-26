@@ -1,0 +1,16 @@
+$spacing: 1.5rem;
+
+// Colours
+// -------
+
+$action-colour: rgb(20, 43, 68);
+$text-colour: rgb(41, 41, 41);
+$bg-colour: rgb(247, 247, 247);
+
+// Typography
+// ----------
+
+// Font Family
+$font-family-sans: join('IBM Plex Sans', $font-stack-helvetica);
+$font-family-serif: join('IBM Plex Serif', $font-stack-garamond);
+$font-family-mono: join('IBM Plex Mono', $font-stack-monaco);

@@ -1,0 +1,60 @@
+%jupyter-notebook {
+  .text_cell {
+    @include grid-container;
+    @extend %container;
+
+    .prompt {
+      @include grid-column(1);
+
+      content: '&nbsp;';
+      margin-top: 1em;
+    }
+
+    .inner_cell {
+      @include grid-column(11);
+    }
+  }
+
+  .code_cell {
+    .input {
+      @include grid-container;
+      @extend %container;
+
+      .prompt {
+        @include grid-column(1);
+
+        margin-top: 1.25em;
+      }
+
+      .inner_cell {
+        @include grid-column(11);
+      }
+    }
+
+    .output {
+      @include grid-container;
+      @extend %container;
+
+      .output_area {
+        @include grid-column(11);
+        @include grid-push(1);
+      }
+    }
+  }
+
+  .text_cell_render {
+    .anchor-link {
+      display: none;
+    }
+  }
+
+  .highlight {
+    @extend %highlight;
+
+    padding: .25rem 1rem;
+
+    pre {
+      white-space: pre-wrap;
+    }
+  }
+}
