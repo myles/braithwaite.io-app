@@ -102,10 +102,6 @@ gulp.task('watch', function() {
 });
 
 gulp.task('flaskRun', function(cb) {
-  var envs = env.set({
-      FLASK_DEBUG: 1
-  });
-
   var cmd = spawn('pipenv', ['run', 'flask', 'run', '--port', b_io.devPort], {
     stdio: 'inherit'
   });

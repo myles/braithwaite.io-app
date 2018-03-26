@@ -7,13 +7,14 @@ name = "pypi"
 
 [packages]
 
-Flask = "*"
+flask = "*"
 nbconvert = "*"
-Flask-DebugToolbar = "*"
+flask-debugtoolbar = "*"
 toml = "*"
 feedgenerator = "*"
 django-jsonfeed = "*"
-Frozen-Flask = "*"
+frozen-flask = "*"
+sh = "*"
 
 
 [dev-packages]

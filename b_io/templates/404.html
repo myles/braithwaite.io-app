@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block extra_page_css %}c-page--404{% endblock %}
+
+{% block body %}
+<div class="b-404">
+    <figure class="b-404__figure">
+        <div class="b-404__inner">
+            <img class="b-404__image" src="{{ url_for('static', filename='tirza-van-dijk-340-unsplash.jpg') }}" alt="Photo by Tirza van Dijk">
+        </div>
+
+        <figcaption class="b-404__caption">Photo by <a href="https://unsplash.com/photos/aGx7X1VmFIY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tirza van Dijk</a> on <a href="https://unsplash.com/search/photos/unknown?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></figcaption>
+    </figure>
+
+    <p class="b-404__lyrics">
+        You're walking in the woods<br/>
+        There's no one around and your phone is dead<br/>
+        Out of the corner of your eye, you spot it<br/>
+        <strong>(404 Not Found)</strong>
+    </p>
+</div>
+{% endblock %}

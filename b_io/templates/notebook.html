@@ -6,6 +6,8 @@
     {% if notebook.hidden %}<meta name="robots" content="noindex">{% endif %}
 {% endblock %}
 
+{% block extra_page_css %}c-page--notebook{% endblock %}
+
 {% block body %}
 <div class="b-notebook h-entry">
     <div class="b-notebook__header">
