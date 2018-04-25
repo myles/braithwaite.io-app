@@ -21,6 +21,16 @@
     font-size: modular-scale(8);
   }
 
+  &__url {
+    color: $text-colour;
+    text-decoration: none;
+
+    &:hover {
+      color: $text-colour;
+      text-decoration: none;
+    }
+  }
+
   &__date {
     font-size: modular-scale(6);
     font-weight: normal;

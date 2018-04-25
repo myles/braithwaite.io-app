@@ -1,21 +1,17 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
-flask = "*"
+Flask = "*"
 nbconvert = "*"
-flask-debugtoolbar = "*"
+Flask-DebugToolbar = "*"
 toml = "*"
 feedgenerator = "*"
 django-jsonfeed = "*"
-frozen-flask = "*"
-sh = "*"
-
+Frozen-Flask = "*"
+requests = "*"
+python-dateutil = "*"
 
 [dev-packages]
-

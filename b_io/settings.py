@@ -25,6 +25,9 @@ class Config(object):
         'B_IO_BUILD_PATH', PROJECT_ROOT.joinpath('build'))
     FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 
+    WEBMENTION_TOKEN = environ.get('B_IO_WEBMENTION_TOKEN')
+    B_IO_WEBMENTION_DOMAIN = environ.get('B_IO_WEBMENTION_DOMAIN')
+
 
 class ProdConfig(Config):
     """Production configuration."""

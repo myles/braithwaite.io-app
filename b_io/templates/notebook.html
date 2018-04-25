@@ -12,7 +12,9 @@
 <div class="b-notebook h-entry">
     <div class="b-notebook__header">
         <h1 class="b-notebook__title p-name">
-            {{ notebook.name }}
+            <a class="b-notebook__url u-url" href="{{ notebook.url }}">
+                {{ notebook.name }}
+            </a>
         </h1>
 
         <h2 class="b-notebook__date dt-published" datetime="{{ notebook.published.isoformat() }}">{{ notebook.published.strftime('%d %B %Y') }}</h2>

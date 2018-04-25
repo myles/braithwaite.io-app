@@ -123,8 +123,21 @@ gulp.task('flaskFreeze', function(cb) {
   });
 });
 
-gulp.task('runServer', function() {
-  runSequence(['build'], ['flaskRun', 'browserSync', 'watch'])
+gulp.task('awsS3Sync', function(cb) {
+  var cmd = spawn('aws', ['s3', 'sync', './build/', 's3://braithwaite.io', '--exclude', '.DS_Store', '--acl', 'public-read'], {
+    stdio: 'inherit'
+  });
+
+  cmd.on('close', function(code) {
+    console.log(`deploy exited with code ${code}`);
+    cb(code);
+  });
 });
+
+gulp.task('runServer', function() {
+  runSequence(['build'], ['flaskRun', 'browserSync', 'watch']);
+});
+
+gulp.task('deploy', ['build', 'flaskFreeze', 'awsS3Sync']);
 
 gulp.task('default', ['build', 'flaskFreeze']);

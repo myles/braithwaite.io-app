@@ -140,3 +140,12 @@ def freeze():
             yield 'views.jupyter_notebook', {'slug': notebook.slug}
 
     freezer.freeze()
+
+
+@click.command()
+@with_appcontext
+def fetch_mentions():
+    import requests
+    from .models import all_notebooks
+
+    notebook_list = all_notebooks()

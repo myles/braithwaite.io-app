@@ -1,9 +1,11 @@
 import datetime
+import json
 import re
 from pathlib import Path
 
 import toml
 import nbformat
+from dateutil.parser import parse as dt_parse
 from nbconvert import HTMLExporter
 
 from flask import current_app, url_for
@@ -12,11 +14,32 @@ re_folder = re.compile(r'^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})-'
                        r'(?P<slug>[-\w]+)$')
 
 
+class Mention(object):
+    """Braithwaite I/O Mention Entry."""
+
+    @classmethod
+    def parse(cls, path):
+        with open(path) as fobj:
+            data = json.loads(fobj.read())
+
+        mention = cls()
+        setattr(mention, '_json', data)
+
+        for k, v in data.items():
+            if k == 'verified_date':
+                setattr(mention, k, dt_parse(v))
+            else:
+                setattr(mention, k, v)
+
+        return mention
+
+
 class Notebook(object):
     """Braithwaite I/O Notebook Entry."""
 
     def __init__(self, path):
         self.path = Path(path)
+        self.mention_path = self.path.joinpath('_mentions')
 
         meta_path = self.path.joinpath('meta.toml')
 
@@ -96,6 +119,15 @@ class Notebook(object):
     @property
     def resources(self):
         self.__resources
+
+    def list_mentions(self):
+        file_list = self.mention_path.glob('*.json')
+
+        mentions = [Mention.parse(file_name) for file_name in file_list]
+
+        mentions.sort(key=lambda x: x.verified_date, reverse=True)
+
+        return mentions
 
 
 def all_notebooks():
