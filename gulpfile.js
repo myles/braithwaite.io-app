@@ -124,6 +124,17 @@ gulp.task('flaskFreeze', function(cb) {
   });
 });
 
+gulp.task('flaskFreezeNetlify', function(cb) {
+  var cmd = spawn('flask', ['freeze'], {
+    stdio: 'inherit'
+  });
+
+  cmd.on('close', function(code) {
+    console.log(`flaskFreeze exited with code ${code}`);
+    cb(code);
+  });
+});
+
 gulp.task('awsS3Sync', function(cb) {
   var cmd = spawn('aws', ['s3', 'sync', './build/', 's3://braithwaite.io', '--exclude', '.DS_Store', '--acl', 'public-read'], {
     stdio: 'inherit'

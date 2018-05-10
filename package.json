@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "gulp cloneNotebooks && gulp default",
+    "build": "gulp cloneNotebooks build flaskFreezeNetlify",
     "build-preview": "gulp runServer"
   },
   "dependencies": {
