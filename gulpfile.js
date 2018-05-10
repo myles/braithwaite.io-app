@@ -12,6 +12,7 @@ var path = require('path'),
     ttf2woff2 = require('gulp-ttf2woff2'),
     ttf2woff = require('gulp-ttf2woff'),
     ttf2eot = require('gulp-ttf2eot'),
+    git = require('gulp-git'),
     spawn = require('child_process').spawn,
     reload = browserSync.reload;
 
@@ -132,6 +133,12 @@ gulp.task('awsS3Sync', function(cb) {
     console.log(`deploy exited with code ${code}`);
     cb(code);
   });
+});
+
+gulp.task('cloneNotebooks', function() {
+  git.clone('https://github.com/myles/braithwaite.io.git', { args: './notebooks/' }, function(err) {
+    if (err) throw err;
+  })
 });
 
 gulp.task('runServer', function() {

@@ -1,4 +1,5 @@
 content/
+notebooks/
 b_io/static/
 b_io/assets/fonts/*.ttf
 
