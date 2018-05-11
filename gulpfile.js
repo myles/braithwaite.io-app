@@ -1,6 +1,7 @@
 'use strict';
 
-var path = require('path'),
+var fs = require('fs'),
+    path = require('path'),
     gulp = require('gulp'),
     sass = require('gulp-sass'),
     runSequence = require('run-sequence'),
@@ -21,6 +22,9 @@ function bioConfig() {
   var app_dir = path.join(__dirname, 'b_io');
 
   return {
+    notebooksRepo: 'https://github.com/myles/braithwaite.io.git',
+    notebooksPath: path.join(__dirname, 'notebooks')
+
     srcFonts: path.join(app_dir, 'assets', 'fonts'),
     destFonts: path.join(app_dir, 'static', 'fonts'),
 
@@ -131,7 +135,7 @@ gulp.task('flaskFreezeNetlify', function(cb) {
   });
 
   cmd.on('close', function(code) {
-    console.log(`flaskFreeze exited with code ${code}`);
+    console.log(`flaskFreezeNetlify exited with code ${code}`);
     cb(code);
   });
 });
@@ -148,9 +152,15 @@ gulp.task('awsS3Sync', function(cb) {
 });
 
 gulp.task('cloneNotebooks', function() {
-  git.clone('https://github.com/myles/braithwaite.io.git', { args: './notebooks/' }, function(err) {
-    if (err) throw err;
-  })
+  if (fs.existsSync(b_io.notebooksPath)) {
+    git.pull('origin', 'master', { cwd: b_io.notebooksPath }, function(err) {
+      if (err) throw err;
+    })
+  } else {
+    git.clone(b_io.notebooksRepo, { args: b_io.notebooksPath }, function(err) {
+      if (err) throw err;
+    })
+  }
 });
 
 gulp.task('set-env', function() {
