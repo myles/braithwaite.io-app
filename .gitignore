@@ -2,6 +2,10 @@ content/
 notebooks/
 b_io/static/
 b_io/assets/fonts/*.ttf
+!b_io/assets/fonts/IBMPlexMono-Regular.ttf
+!b_io/assets/fonts/IBMPlexSans-Regular.ttf
+!b_io/assets/fonts/IBMPlexSerif-Regular.ttf
+!b_io/assets/fonts/IBMPlexSans-Bold.ttf
 
 # macOS
 # -----
