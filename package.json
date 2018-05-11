@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "gulp cloneNotebooks build flaskFreezeNetlify",
+    "build": "gulp set-env cloneNotebooks build flaskFreezeNetlify",
     "build-preview": "gulp runServer"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-commonjs": "^0.1.0",
+    "gulp-env": "^0.4.0",
     "gulp-git": "^2.6.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-rename": "^1.2.2",

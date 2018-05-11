@@ -1,8 +1,4 @@
 [build]
+  base = '.'
   command = "npm run build"
   publish = "build"
-
-[template.environment]
-  FLASK_APP = "autoapp.py"
-  B_IO_CONTENT_PATH = "./notebooks/"
-  B_IO_WEBMENTION_DOMAIN = "braithwaite.io"

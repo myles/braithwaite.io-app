@@ -13,6 +13,7 @@ var path = require('path'),
     ttf2woff = require('gulp-ttf2woff'),
     ttf2eot = require('gulp-ttf2eot'),
     git = require('gulp-git'),
+    env = require('gulp-env'),
     spawn = require('child_process').spawn,
     reload = browserSync.reload;
 
@@ -149,6 +150,14 @@ gulp.task('awsS3Sync', function(cb) {
 gulp.task('cloneNotebooks', function() {
   git.clone('https://github.com/myles/braithwaite.io.git', { args: './notebooks/' }, function(err) {
     if (err) throw err;
+  })
+});
+
+gulp.task('set-env', function() {
+  env({
+    vars: {
+      FLASK_APP: 'autoapp.py'
+    }
   })
 });
 
