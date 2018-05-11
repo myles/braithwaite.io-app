@@ -23,7 +23,7 @@ function bioConfig() {
 
   return {
     notebooksRepo: 'https://github.com/myles/braithwaite.io.git',
-    notebooksPath: path.join(__dirname, 'notebooks')
+    notebooksPath: path.join(__dirname, 'notebooks'),
 
     srcFonts: path.join(app_dir, 'assets', 'fonts'),
     destFonts: path.join(app_dir, 'static', 'fonts'),
