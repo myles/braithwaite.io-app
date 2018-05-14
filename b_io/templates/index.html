@@ -8,8 +8,12 @@
             {% for notebook in notebooks %}
             <a class="b-home__notebook-link" href="{{ notebook.url }}">
                 <h2 class="b-home__notebook-title">{{ notebook.name }}</h2>
+
                 <p class="b-home__notebook-date">{{ notebook.published.strftime('%d %B %Y') }}</p>
+
+                {% if notebook.summary %}
                 <p class="b-home__notebook-summary">{{ notebook.summary }}</p>
+                {% endif %}
             </a>
             {% endfor %}
         </div>

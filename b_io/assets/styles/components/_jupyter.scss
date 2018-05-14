@@ -1,0 +1,9 @@
+.c-jupyter {
+  padding-bottom: 1rem;
+
+  &__input,
+  &__output {
+    @include grid-container;
+    @extend %container;
+  }
+}

@@ -19,11 +19,12 @@ var fs = require('fs'),
     reload = browserSync.reload;
 
 function bioConfig() {
-  var app_dir = path.join(__dirname, 'b_io');
+  var root_dir = path.join(__dirname),
+      app_dir = path.join(root_dir, 'b_io');
 
   return {
     notebooksRepo: 'https://github.com/myles/braithwaite.io.git',
-    notebooksPath: path.join(__dirname, 'notebooks'),
+    notebooksPath: path.join(root_dir, 'notebooks'),
 
     srcFonts: path.join(app_dir, 'assets', 'fonts'),
     destFonts: path.join(app_dir, 'static', 'fonts'),
