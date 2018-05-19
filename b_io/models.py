@@ -10,7 +10,7 @@ from nbconvert import HTMLExporter
 
 from flask import current_app, url_for
 
-re_folder = re.compile(r'^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})-'
+RE_FOLDER = re.compile(r'^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})-'
                        r'(?P<slug>[-\w]+)$')
 
 
@@ -19,6 +19,7 @@ class Mention(object):
 
     @classmethod
     def parse(cls, path):
+        """Parse the mention."""
         with open(path) as fobj:
             data = json.loads(fobj.read())
 
@@ -54,8 +55,9 @@ class Notebook(object):
         with open(notebook_path) as fobj:
             notebook = nbformat.reads(fobj.read(), as_version=4)
 
-        html_exporter = HTMLExporter()
-        html_exporter.template_file = 'basic'
+        html_exporter = HTMLExporter(
+            template_path=[str(current_app.config['TEMPLATES_FOLDER'])])
+        html_exporter.template_file = 'nbconvert'
 
         (self.__body, self.__resources) = \
             html_exporter.from_notebook_node(notebook)
@@ -65,7 +67,7 @@ class Notebook(object):
         if self.__meta.get('name'):
             return self.__meta.get('name')
         else:
-            match = re_folder.match(self.path.name).groupdict()
+            match = RE_FOLDER.match(self.path.name).groupdict()
             return match['slug'].replace('-', ' ')
 
     @property
@@ -73,7 +75,7 @@ class Notebook(object):
         if self.__meta.get('published'):
             return self.__meta.get('published')
         else:
-            match = re_folder.match(self.path.name).groupdict()
+            match = RE_FOLDER.match(self.path.name).groupdict()
             return datetime.datetime.strptime(
                 '{year}-{month}-{day}'.format(match),
                 '%Y-%m-%d')
@@ -82,11 +84,13 @@ class Notebook(object):
     def updated(self):
         if self.__meta.get('updated'):
             return self.__meta.get('updated')
-        else:
-            match = re_folder.match(self.path.name).groupdict()
-            return datetime.datetime.strptime(
-                '{year}-{month}-{day}'.format(match),
-                '%Y-%m-%d')
+
+        match = RE_FOLDER.match(self.path.name).groupdict()
+
+        return datetime.datetime.strptime(
+            '{year}-{month}-{day}'.format(**match),
+            '%Y-%m-%d'
+        )
 
     @property
     def hidden(self):
@@ -118,7 +122,7 @@ class Notebook(object):
 
     @property
     def resources(self):
-        self.__resources
+        return self.__resources
 
     def list_mentions(self):
         file_list = self.mention_path.glob('*.json')
@@ -141,5 +145,20 @@ def all_notebooks():
 
     g = list(gen())
     g.sort(key=lambda x: x.published, reverse=True)
+
+    return g
+
+
+def all_mentions():
+    def gen():
+        content_path = Path(current_app.config['CONTENT_ROOT'])
+
+        mentions = content_path.glob('**/_mentions/*.json')
+
+        for mention in mentions:
+            yield Mention(mention)
+
+    g = list(gen())
+    g.sort(key=lambda x: x.id, reversed=True)
 
     return g

@@ -14,3 +14,10 @@ $bg-colour: rgb(247, 247, 247);
 $font-family-sans: join('IBM Plex Sans', $font-stack-helvetica);
 $font-family-serif: join('IBM Plex Serif', $font-stack-garamond);
 $font-family-mono: join('IBM Plex Mono', $font-stack-monaco);
+
+// Neat
+// ----
+$neat-grid: (
+  columns: 12,
+  gutter: 20px
+);

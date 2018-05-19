@@ -2,7 +2,7 @@
 
 {% block codecell %}
   {%- if not (cell.metadata.hide_output or nb.metadata.hide_input or cell.metadata.hide_input) -%}
-  <div class="c-jupyter__cell c-jupyter__cell--code">
+  <div class="c-jupyter__row c-jupyter__row--code">
     {{ super() }}
   </div>
   {% endif %}
@@ -43,7 +43,7 @@
 {% endblock output_prompt %}
 
 {% block input %}
-<div class="c-jupyter__cell">
+<div class="c-jupyter__cell c-jupyter__cell--input">
   {{ cell.source | highlight_code(metadata=cell.metadata) }}
 </div>
 {%- endblock input %}
@@ -58,6 +58,7 @@
     {%- endif -%}
 {%- else -%}
     <div class="c-jupyter__prompt">
+        &nbsp;
 {%- endif -%}
     </div>
 {% endblock output_area_prompt %}
@@ -95,7 +96,7 @@ unknown type  {{ cell.type }}
 {%- endblock execute_result %}
 
 {% block stream_stdout -%}
-<div class="output_subarea output_stream output_stdout output_text">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-subarea c-jupyter__cell--output-stream c-jupyter__cell--output-stdout c-jupyter__cell--output-text">
 <pre>
 {{- output.text | ansi2html -}}
 </pre>
@@ -103,7 +104,7 @@ unknown type  {{ cell.type }}
 {%- endblock stream_stdout %}
 
 {% block stream_stderr -%}
-<div class="output_subarea output_stream output_stderr output_text">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-subarea c-jupyter__cell--output-stream c-jupyter__cell--output-stderr c-jupyter__cell--output-text">
 <pre>
 {{- output.text | ansi2html -}}
 </pre>
@@ -111,7 +112,7 @@ unknown type  {{ cell.type }}
 {%- endblock stream_stderr %}
 
 {% block data_svg scoped -%}
-<div class="output_svg output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-svg c-jupyter__cell--output-subarea {{ extra_class }}">
 {%- if output.svg_filename %}
 <img src="{{ output.svg_filename | posix_path }}"
 {%- else %}
@@ -121,19 +122,19 @@ unknown type  {{ cell.type }}
 {%- endblock data_svg %}
 
 {% block data_html scoped -%}
-<div class="output_html rendered_html output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-html c-jupyter__cell--rendered-html c-jupyter__cell--output-subarea {{ extra_class }}">
 {{ output.data['text/html'] }}
 </div>
 {%- endblock data_html %}
 
 {% block data_markdown scoped -%}
-<div class="output_markdown rendered_html output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-markdown c-jupyter__cell--rendered-html c-jupyter__cell--output-subarea {{ extra_class }}">
 {{ output.data['text/markdown'] | markdown2html }}
 </div>
 {%- endblock data_markdown %}
 
 {% block data_png scoped %}
-<div class="output_png output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-png c-jupyter__cell--output-subarea {{ extra_class }}">
 {%- if 'image/png' in output.metadata.get('filenames', {}) %}
 <img src="{{ output.metadata.filenames['image/png'] | posix_path }}"
 {%- else %}
@@ -155,7 +156,7 @@ class="unconfined"
 {%- endblock data_png %}
 
 {% block data_jpg scoped %}
-<div class="output_jpeg output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-jpeg c-jupyter__cell--output-subarea {{ extra_class }}">
 {%- if 'image/jpeg' in output.metadata.get('filenames', {}) %}
 <img src="{{ output.metadata.filenames['image/jpeg'] | posix_path }}"
 {%- else %}
@@ -177,13 +178,13 @@ class="unconfined"
 {%- endblock data_jpg %}
 
 {% block data_latex scoped %}
-<div class="output_latex output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-latex c-jupyter__cell--output-subarea {{ extra_class }}">
 {{ output.data['text/latex'] }}
 </div>
 {%- endblock data_latex %}
 
 {% block error -%}
-<div class="output_subarea output_text output_error">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-subarea c-jupyter__cell--output-text c-jupyter__cell--output-error">
 <pre>
 {{- super() -}}
 </pre>
@@ -195,7 +196,7 @@ class="unconfined"
 {%- endblock traceback_line %}
 
 {%- block data_text scoped %}
-<div class="output_text output_subarea {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-text c-jupyter__cell--output-subarea {{ extra_class }}">
 <pre>
 {{- output.data['text/plain'] | ansi2html -}}
 </pre>
@@ -205,7 +206,7 @@ class="unconfined"
 {%- block data_javascript scoped %}
 {% set div_id = uuid4() %}
 <div id="{{ div_id }}"></div>
-<div class="output_subarea output_javascript {{ extra_class }}">
+<div class="c-jupyter__cell c-jupyter__cell--output c-jupyter__cell--output-subarea c-jupyter__cell--output-javascript {{ extra_class }}">
 <script type="text/javascript">
 var element = $('#{{ div_id }}');
 {{ output.data['application/javascript'] }}

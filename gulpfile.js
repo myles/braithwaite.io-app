@@ -91,7 +91,7 @@ gulp.task('images', function() {
       .pipe(gulp.dest(b_io.destImages));
 });
 
-gulp.task('build', ['styles', 'scripts', 'fonts', 'images']);
+gulp.task('build', ['styles', 'scripts', 'images']);
 
 gulp.task('browserSync', ['build'], function() {
   browserSync.init([

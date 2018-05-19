@@ -1,9 +1,59 @@
 .c-jupyter {
-  padding-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  pre {
+    @include value-prefixer(white-space, pre-wrap, ('webkit', 'moz', 'o'));
+
+    margin: 0;
+    word-wrap: break-word;  // IE 5.5+
+    width: 100%;
+  }
+
+  &__row {
+    @extend %container;
+
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    &--code {
+      .highlight {
+        @extend %highlight;
+
+        border: 1px solid transparentize($text-colour, 0.75);
+        padding: 10px;
+        margin-top: -10px;
+        margin-bottom: -10px;
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+    }
+  }
 
   &__input,
   &__output {
     @include grid-container;
-    @extend %container;
+  }
+
+  &__input {
+    padding-bottom: 10px;
+  }
+
+  &__output {
+    padding-top: 10px;
+  }
+
+  &__prompt {
+    @include grid-column(1);
+
+    font-family: $font-family-mono;
+    text-align: right;
+  }
+
+  &__cell {
+    @include grid-column(11);
+
+    padding-left: .5rem;
+    margin-bottom: .5rem;
   }
 }

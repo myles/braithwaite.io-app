@@ -75,7 +75,9 @@ def register_commands(app):
 
 
 def register_context_processors(app):
+    """Register Context Processors."""
     def version():
+        """Return the B I/O version."""
         return {'version': __version__}
 
     app.context_processor(version)

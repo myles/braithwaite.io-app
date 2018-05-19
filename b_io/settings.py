@@ -11,6 +11,7 @@ class Config(object):
     APP_DIR = Path(__file__).parents[0]
 
     STATIC_FOLDER = APP_DIR.joinpath('static')
+    TEMPLATES_FOLDER = STATIC_FOLDER = APP_DIR.joinpath('templates')
     CONTENT_ROOT = environ.get(
         'B_IO_CONTENT_PATH', PROJECT_ROOT.joinpath('content'))
 

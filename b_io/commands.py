@@ -131,10 +131,12 @@ def urls(url, order):
 @click.command()
 @with_appcontext
 def freeze():
+    """Compile the website to static HTML."""
     freezer = Freezer(current_app)
 
     @freezer.register_generator
-    def jupyter_notebook():
+    def jupyter_notebook():  # pylint: disable=W0612
+        """Get all the Notebooks."""
         from .models import all_notebooks
         for notebook in all_notebooks():
             yield 'views.jupyter_notebook', {'slug': notebook.slug}
@@ -145,7 +147,18 @@ def freeze():
 @click.command()
 @with_appcontext
 def fetch_mentions():
+    """Fetch the Webmetions."""
     import requests
     from .models import all_notebooks
 
-    notebook_list = all_notebooks()
+    url = 'https://webmention.io/api/mentions?domain={domain}&token={token}'
+
+    resp = requests.get(
+        url.format(
+            domain=current_app.config['B_IO_WEBMENTION_DOMAIN'],
+            token=current_app.config['WEBMENTION_TOKEN'],
+        )
+    )
+
+    if not resp.ok:
+        raise Exception
