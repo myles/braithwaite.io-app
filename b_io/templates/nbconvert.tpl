@@ -32,6 +32,7 @@
 
 {% block empty_in_prompt -%}
 <div class="c-jupyter__prompt c-jupyter__prompt--input c-jupyter__prompt--empty">
+  &nbsp;
 </div>
 {%- endblock empty_in_prompt %}
 
@@ -71,15 +72,13 @@
 {% endblock output %}
 
 {% block markdowncell scoped %}
-<div class="cell border-box-sizing text_cell rendered">
-{%- if resources.global_content_filter.include_input_prompt-%}
-    {{ self.empty_in_prompt() }}
-{%- endif -%}
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-{{ cell.source  | markdown2html | strip_files_prefix }}
-</div>
-</div>
+<div class="c-jupyter__row c-jupyter__row--text c-jupyter__row--border-box-sizing c-jupyter__row--rendered">
+  {%- if resources.global_content_filter.include_input_prompt-%}
+  {{ self.empty_in_prompt() }}
+  {%- endif -%}
+  <div class="c-jupyter__cell c-jupyter__cell--input">
+    {{ cell.source  | markdown2html | strip_files_prefix }}
+  </div>
 </div>
 {%- endblock markdowncell %}
 
