@@ -1,0 +1,35 @@
+$border-width: 1px;
+
+.dataframe {
+  border: 0 !important;
+  max-width: 100%;
+  margin-bottom: 1em;
+
+  th,
+  td {
+    padding: .75em;
+    vertical-align: top !important;
+    border: 0 !important;
+    border-top: $border-width solid rgba(#000, .05);
+  }
+
+  thead {
+    text-align: left !important;
+  }
+
+  thead th {
+    text-align: left !important;
+    vertical-align: bottom !important;
+    border: 0 !important;
+    border-bottom: (2 * $border-width) solid rgba(#000, .075);
+  }
+
+  tbody + tbody {
+    border: 0 !important;
+    border-top: (2 * $border-width) solid rgba(#000, .075);
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(#000, .05);
+  }
+}
