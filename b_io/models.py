@@ -61,7 +61,9 @@ class Notebook(object):
         )
         html_exporter.template_file = "nbconvert"
 
-        (self.__body, self.__resources) = html_exporter.from_notebook_node(notebook)
+        (self.__body, self.__resources) = html_exporter.from_notebook_node(
+            notebook
+        )
 
     @property
     def name(self):

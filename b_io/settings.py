@@ -12,7 +12,9 @@ class Config(object):
 
     STATIC_FOLDER = APP_DIR.joinpath("static")
     TEMPLATES_FOLDER = APP_DIR.joinpath("templates")
-    CONTENT_ROOT = environ.get("B_IO_CONTENT_PATH", PROJECT_ROOT.joinpath("content"))
+    CONTENT_ROOT = environ.get(
+        "B_IO_CONTENT_PATH", PROJECT_ROOT.joinpath("content")
+    )
 
     GITHUB_REPO = environ.get(
         "B_IO_GITHUB_REPO", "https://github.com/myles/braithwaite.io-notebook"
@@ -21,7 +23,9 @@ class Config(object):
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 
-    FREEZER_DESTINATION = environ.get("B_IO_BUILD_PATH", PROJECT_ROOT.joinpath("build"))
+    FREEZER_DESTINATION = environ.get(
+        "B_IO_BUILD_PATH", PROJECT_ROOT.joinpath("build")
+    )
     FREEZER_IGNORE_MIMETYPE_WARNINGS = True
 
     WEBMENTION_TOKEN = environ.get("B_IO_WEBMENTION_TOKEN")

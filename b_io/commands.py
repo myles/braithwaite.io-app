@@ -74,7 +74,9 @@ def clean():
 @click.command()
 @click.option("--url", default=None, help="Url to test (ex. /static/image.png)")
 @click.option(
-    "--order", default="rule", help="Property on Rule to order by (default: rule)"
+    "--order",
+    default="rule",
+    help="Property on Rule to order by (default: rule)",
 )
 @with_appcontext
 def urls(url, order):
@@ -98,7 +100,8 @@ def urls(url, order):
             column_length = 1
     else:
         rules = sorted(
-            current_app.url_map.iter_rules(), key=lambda rule: getattr(rule, order)
+            current_app.url_map.iter_rules(),
+            key=lambda rule: getattr(rule, order),
         )
         for rule in rules:
             rows.append((rule.rule, rule.endpoint, None))
@@ -116,13 +119,17 @@ def urls(url, order):
     if column_length >= 2:
         max_endpoint_length = max(len(str(r[1])) for r in rows)
         # max_endpoint_length = max(rows, key=len)
-        max_endpoint_length = max_endpoint_length if max_endpoint_length > 8 else 8
+        max_endpoint_length = (
+            max_endpoint_length if max_endpoint_length > 8 else 8
+        )
         str_template += "  {:" + str(max_endpoint_length) + "}"
         table_width += 2 + max_endpoint_length
 
     if column_length >= 3:
         max_arguments_length = max(len(str(r[2])) for r in rows)
-        max_arguments_length = max_arguments_length if max_arguments_length > 9 else 9
+        max_arguments_length = (
+            max_arguments_length if max_arguments_length > 9 else 9
+        )
         str_template += "  {:" + str(max_arguments_length) + "}"
         table_width += 2 + max_arguments_length
 
