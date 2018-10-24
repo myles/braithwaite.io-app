@@ -2,7 +2,7 @@ from os import environ
 from pathlib import Path
 
 
-class Config(object):
+class Config:
     """Base configuration."""
 
     SECRET_KEY = environ.get("B_IO_SECRET", "secret-key")
@@ -30,6 +30,8 @@ class Config(object):
 
     WEBMENTION_TOKEN = environ.get("B_IO_WEBMENTION_TOKEN")
     B_IO_WEBMENTION_DOMAIN = environ.get("B_IO_WEBMENTION_DOMAIN")
+
+    SENTRY_DSN = None
 
 
 class ProdConfig(Config):

@@ -53,7 +53,7 @@ def feed(feed_type):
             description=notebook.content,
             pubdate=notebook.published,
             categories=notebook.category,
-            **author_info
+            **author_info,
         )
 
     return Response(feed.writeString("utf-8"), mimetype=mimetype)

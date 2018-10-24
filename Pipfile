@@ -17,3 +17,6 @@ sentry-sdk = {version = "==0.5.1", extras = ["flask"]}
 
 [dev-packages]
 black = "*"
+
+[requires]
+python_version = "3.6"
