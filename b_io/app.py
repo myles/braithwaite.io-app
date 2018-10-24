@@ -15,7 +15,7 @@ def create_app(config_obj=ProdConfig):
 
     :param config_obj: The configuration object to use.
     """
-    app = Flask(__name__.split('.')[0])
+    app = Flask(__name__.split(".")[0])
     app.config.from_object(config_obj)
 
     register_extensions(app)
@@ -44,11 +44,12 @@ def register_blueprints(app):
 
 def register_errorhandlers(app):
     """Register error handlers."""
+
     def render_error(error):
         """Render error template."""
         # If a HTTPException, pull the `code` attribute; default to 500
-        error_code = getattr(error, 'code', 500)
-        return render_template('{0}.html'.format(error_code)), error_code
+        error_code = getattr(error, "code", 500)
+        return render_template("{0}.html".format(error_code)), error_code
 
     for errcode in [401, 404, 500]:
         app.errorhandler(errcode)(render_error)
@@ -58,6 +59,7 @@ def register_errorhandlers(app):
 
 def register_shellcontext(app):
     """Register shell context objects."""
+
     def shell_context():
         """Shell context objects."""
         return {}
@@ -76,8 +78,9 @@ def register_commands(app):
 
 def register_context_processors(app):
     """Register Context Processors."""
+
     def version():
         """Return the B I/O version."""
-        return {'version': __version__}
+        return {"version": __version__}
 
     app.context_processor(version)

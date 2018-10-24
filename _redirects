@@ -3,4 +3,3 @@ https://braithwaite-io.netlify.com/* https://braithwaite.io/:splat 301!
 
 # These extra rules are required because HTTPS is not forced
 http://braithwaite-io.netlify.com/* https://braithwaite.io/:splat 301!
-

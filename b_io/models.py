@@ -10,8 +10,9 @@ from nbconvert import HTMLExporter
 
 from flask import current_app, url_for
 
-RE_FOLDER = re.compile(r'^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})-'
-                       r'(?P<slug>[-\w]+)$')
+RE_FOLDER = re.compile(
+    r"^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})-" r"(?P<slug>[-\w]+)$"
+)
 
 
 class Mention(object):
@@ -24,10 +25,10 @@ class Mention(object):
             data = json.loads(fobj.read())
 
         mention = cls()
-        setattr(mention, '_json', data)
+        setattr(mention, "_json", data)
 
         for k, v in data.items():
-            if k == 'verified_date':
+            if k == "verified_date":
                 setattr(mention, k, dt_parse(v))
             else:
                 setattr(mention, k, v)
@@ -40,9 +41,9 @@ class Notebook(object):
 
     def __init__(self, path):
         self.path = Path(path)
-        self.mention_path = self.path.joinpath('_mentions')
+        self.mention_path = self.path.joinpath("_mentions")
 
-        meta_path = self.path.joinpath('meta.toml')
+        meta_path = self.path.joinpath("meta.toml")
 
         if meta_path.is_file():
             with open(meta_path) as fobj:
@@ -50,59 +51,58 @@ class Notebook(object):
         else:
             self.__meta = {}
 
-        notebook_path = self.path.joinpath('notebook.ipynb')
+        notebook_path = self.path.joinpath("notebook.ipynb")
 
         with open(notebook_path) as fobj:
             notebook = nbformat.reads(fobj.read(), as_version=4)
 
         html_exporter = HTMLExporter(
-            template_path=[str(current_app.config['TEMPLATES_FOLDER'])])
-        html_exporter.template_file = 'nbconvert'
+            template_path=[str(current_app.config["TEMPLATES_FOLDER"])]
+        )
+        html_exporter.template_file = "nbconvert"
 
-        (self.__body, self.__resources) = \
-            html_exporter.from_notebook_node(notebook)
+        (self.__body, self.__resources) = html_exporter.from_notebook_node(notebook)
 
     @property
     def name(self):
-        if self.__meta.get('name'):
-            return self.__meta.get('name')
+        if self.__meta.get("name"):
+            return self.__meta.get("name")
         else:
             match = RE_FOLDER.match(self.path.name).groupdict()
-            return match['slug'].replace('-', ' ')
+            return match["slug"].replace("-", " ")
 
     @property
     def published(self):
-        if self.__meta.get('published'):
-            return self.__meta.get('published')
+        if self.__meta.get("published"):
+            return self.__meta.get("published")
         else:
             match = RE_FOLDER.match(self.path.name).groupdict()
             return datetime.datetime.strptime(
-                '{year}-{month}-{day}'.format(match),
-                '%Y-%m-%d')
+                "{year}-{month}-{day}".format(match), "%Y-%m-%d"
+            )
 
     @property
     def updated(self):
-        if self.__meta.get('updated'):
-            return self.__meta.get('updated')
+        if self.__meta.get("updated"):
+            return self.__meta.get("updated")
 
         match = RE_FOLDER.match(self.path.name).groupdict()
 
         return datetime.datetime.strptime(
-            '{year}-{month}-{day}'.format(**match),
-            '%Y-%m-%d'
+            "{year}-{month}-{day}".format(**match), "%Y-%m-%d"
         )
 
     @property
     def hidden(self):
-        return self.__meta.get('hidden', False)
+        return self.__meta.get("hidden", False)
 
     @property
     def category(self):
-        return self.__meta.get('category')
+        return self.__meta.get("category")
 
     @property
     def summary(self):
-        return self.__meta.get('summary')
+        return self.__meta.get("summary")
 
     @property
     def content(self):
@@ -114,18 +114,18 @@ class Notebook(object):
 
     @property
     def url(self):
-        return url_for('views.notebook', slug=self.slug)
+        return url_for("views.notebook", slug=self.slug)
 
     @property
     def notebook_url(self):
-        return url_for('views.jupyter_notebook', slug=self.slug)
+        return url_for("views.jupyter_notebook", slug=self.slug)
 
     @property
     def resources(self):
         return self.__resources
 
     def list_mentions(self):
-        file_list = self.mention_path.glob('*.json')
+        file_list = self.mention_path.glob("*.json")
 
         mentions = [Mention.parse(file_name) for file_name in file_list]
 
@@ -136,9 +136,9 @@ class Notebook(object):
 
 def all_notebooks():
     def gen():
-        content_path = Path(current_app.config['CONTENT_ROOT'])
+        content_path = Path(current_app.config["CONTENT_ROOT"])
 
-        notebooks = content_path.glob('**/meta.toml')
+        notebooks = content_path.glob("**/meta.toml")
 
         for path in notebooks:
             yield Notebook(path.parent)
@@ -151,9 +151,9 @@ def all_notebooks():
 
 def all_mentions():
     def gen():
-        content_path = Path(current_app.config['CONTENT_ROOT'])
+        content_path = Path(current_app.config["CONTENT_ROOT"])
 
-        mentions = content_path.glob('**/_mentions/*.json')
+        mentions = content_path.glob("**/_mentions/*.json")
 
         for mention in mentions:
             yield Mention(mention)
