@@ -1,3 +1,8 @@
 [build]
   command = "npm run-script build"
   publish = "build"
+
+[build.environment]
+  NODE_ENV = "production"
+  PYTHON_VERSION = "3.6"
+
