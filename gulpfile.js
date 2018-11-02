@@ -126,7 +126,7 @@ gulp.task('flaskFreeze', function(cb) {
 
   cmd.on('close', function(code) {
     console.log(`flaskFreeze exited with code ${code}`);
-    // cb(code);
+    cb(code);
   });
 });
 
@@ -137,7 +137,7 @@ gulp.task('flaskFreezeNetlify', function(cb) {
 
   cmd.on('close', function(code) {
     console.log(`flaskFreezeNetlify exited with code ${code}`);
-    cb(code);
+    // cb(code);
   });
 });
 
