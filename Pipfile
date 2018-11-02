@@ -13,7 +13,5 @@ django-jsonfeed = "*"
 Frozen-Flask = "*"
 requests = "*"
 python-dateutil = "*"
-sentry-sdk = {version = "==0.5.1", extras = ["flask"]}
+# sentry-sdk = {version = "==0.5.1", extras = ["flask"]}
 
-[requires]
-python_version = "3.6"
