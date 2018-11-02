@@ -15,3 +15,6 @@ requests = "*"
 python-dateutil = "*"
 # sentry-sdk = {version = "==0.5.1", extras = ["flask"]}
 
+[required]
+python_version = ">=3.6"
+
