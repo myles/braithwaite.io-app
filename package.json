@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "gulp set-env cloneNotebooks build flaskFreezeNetlify",
-    "build-preview": "gulp runServer"
+    "deploy": "netlify deploy --prod --dir=build/"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
@@ -22,6 +22,7 @@
     "gulp-ttf2eot": "^1.1.2",
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^2.0.2",
+    "netlify-cli": "^2.2.0",
     "run-sequence": "^2.2.0",
     "shave": "^2.4.0"
   }
