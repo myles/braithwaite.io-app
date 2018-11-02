@@ -126,7 +126,7 @@ gulp.task('flaskFreeze', function(cb) {
 
   cmd.on('close', function(code) {
     console.log(`flaskFreeze exited with code ${code}`);
-    cb(code);
+    // cb(code);
   });
 });
 
