@@ -53,7 +53,12 @@ var config = {
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
                 use: [
-                    'file-loader',
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[hash].[ext]'
+                        }
+                    },
                     {
                         loader: 'image-webpack-loader',
                         options: {
@@ -63,11 +68,11 @@ var config = {
                 ]
             },
             {
-                test: /\.(ttf|eot|woff|woff2)$/,
+                test: /\.(ttf|eot|woff|woff2)$/i,
                 use: {
                     loader: "file-loader",
                     options: {
-                        name: "[name].[ext]",
+                        name: "[name].[hash].[ext]",
                     },
                 },
             },
@@ -76,7 +81,8 @@ var config = {
     plugins: [
         new ManifestRevisionPlugin(
             path.resolve(__dirname, 'b_io/static/manifest.json'), {
-                rootAssetPath: path.resolve(__dirname, 'b_io/assets/')
+                rootAssetPath: path.resolve(__dirname, 'b_io/assets/'),
+                extensionsRegex: /\.(gif|png|jpe?g|svg|ttf|eot|woff|woff2)$/i
             }
         ),
     ]

@@ -1,0 +1,7 @@
+services:
+  - docker
+
+before_install:
+- docker pull netlify/build
+- docker build ."
+- docker ps -a

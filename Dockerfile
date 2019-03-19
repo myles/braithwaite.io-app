@@ -3,4 +3,4 @@ FROM netlify/build
 WORKDIR /opt/repo
 COPY ./ ./
 
-RUN build npm run-script build
+RUN ./test-tools/test-build.sh ./ 'npm run build'

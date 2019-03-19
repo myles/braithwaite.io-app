@@ -9,9 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans|IBM+Plex+Serif:400,700" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ asset_url_for('main.css') }}">
 
-        <link rel="icon" size="32x32" href="{{ url_for('static', filename='favicon.png')}}">
+        <link rel="icon" href="{{ asset_url_for('images/favicon.png') }}">
 
         <link rel="pingback" href="https://webmention.io/braithwaite.io/xmlrpc">
         <link rel="webmention" href="https://webmention.io/braithwaite.io/webmention">
@@ -26,7 +26,7 @@
         <div class="c-site-title">
             <a href="{{ url_for('views.index') }}" class="c-site-title__link">
                 <h1 class="c-site-title__heading">
-                    <span class"c-site-title__braithwaite">
+                    <span class="c-site-title__braithwaite">
                         Braithwaite
                     </span>
 
@@ -47,17 +47,51 @@
                     </h2>
 
                     <div class="c-footer__avatar">
-                        <img class="c-footer__avatar-image u-photo" src="{{ url_for('static', filename='avatar.svg') }}" alt="Myles Braithwaite's Avatar">
+                        <img class="c-footer__avatar-image u-photo"
+                             src="{{ asset_url_for('images/avatar.svg') }}"
+                             alt="Myles Braithwaite's Avatar"
+                        >
                     </div>
 
                     <div class="c-footer__icon-group">
-                        <a class="c-footer__icon c-footer__icon--twitter u-url" rel="me" href="https://twitter.com/mylesb"><img class="c-footer__icon-image" src="{{ url_for('static', filename='twitter.svg') }}" alt="Twitter"></a>
+                        <a class="c-footer__icon c-footer__icon--twitter u-url"
+                           rel="me"
+                           href="https://twitter.com/mylesb"
+                        >
+                            <img class="c-footer__icon-image"
+                                 src="{{ asset_url_for('images/twitter.svg') }}"
+                                 alt="Twitter"
+                            >
+                        </a>
 
-                        <a class="c-footer__icon c-footer__icon--github u-url" rel="me" href="https://github.com/myles"><img class="c-footer__icon-image" src="{{ url_for('static', filename='github.svg') }}" alt="GitHub"></a>
+                        <a class="c-footer__icon c-footer__icon--github u-url"
+                           rel="me"
+                           href="https://github.com/myles"
+                        >
+                            <img class="c-footer__icon-image"
+                                 src="{{ asset_url_for('images/github.svg') }}"
+                                 alt="GitHub">
+                        </a>
 
-                        <a class="c-footer__icon c-footer__icon--facebook u-url" rel="me" href="https://facebook.com/mylesbraithwaite"><img class="c-footer__icon-image" src="{{ url_for('static', filename='facebook.svg') }}" alt="Facebook"></a>
+                        <a class="c-footer__icon c-footer__icon--facebook u-url"
+                           rel="me"
+                           href="https://facebook.com/mylesbraithwaite"
+                        >
+                            <img class="c-footer__icon-image"
+                                 src="{{ asset_url_for('images/facebook.svg') }}"
+                                 alt="Facebook"
+                            >
+                        </a>
 
-                        <a class="c-footer__icon c-footer__icon--github u-url" rel="me" href="https://linkedin.com/in/mylesbraithwaite"><img class="c-footer__icon-image" src="{{ url_for('static', filename='linkedin.svg') }}" alt="LinkedIn"></a>
+                        <a class="c-footer__icon c-footer__icon--github u-url"
+                           rel="me"
+                           href="https://linkedin.com/in/mylesbraithwaite"
+                        >
+                            <img class="c-footer__icon-image"
+                                 src="{{ asset_url_for('images/linkedin.svg') }}"
+                                 alt="LinkedIn"
+                            >
+                        </a>
                     </div>
                 </div>
 
@@ -74,7 +108,7 @@
         </div>
 
         {% block foot %}
-        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <script src="{{ asset_url_for('main.js') }}"></script>
         {% block extra_foot %}{% endblock %}
         {% endblock %}
     </body>
