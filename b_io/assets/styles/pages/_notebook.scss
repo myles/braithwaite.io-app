@@ -1,3 +1,8 @@
+@import '~bourbon/core/bourbon';
+
+@import '../abstract/vars';
+@import '../base/container';
+
 .b-notebook {
   &__header {
     @extend %container;

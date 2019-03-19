@@ -1,5 +1,5 @@
 [build]
-  command = "gulp set-env cloneNotebooks build flaskFreezeNetlify"
+  command = "npm run-script build"
   publish = "build"
 
 [build.environment]

@@ -1,3 +1,1 @@
-import shave from 'shave';
-
-shave('.output_wrapper', '360px', {spaces: false});
+import style from '../styles/index.scss';

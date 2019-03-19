@@ -10,10 +10,10 @@ class Config:
     PROJECT_ROOT = Path(__file__).parents[1]
     APP_DIR = Path(__file__).parents[0]
 
-    STATIC_FOLDER = APP_DIR.joinpath("static")
-    TEMPLATES_FOLDER = APP_DIR.joinpath("templates")
+    STATIC_FOLDER = APP_DIR / "static"
+    TEMPLATES_FOLDER = APP_DIR / "templates"
     CONTENT_ROOT = environ.get(
-        "B_IO_CONTENT_PATH", PROJECT_ROOT.joinpath("content")
+        "B_IO_CONTENT_PATH", PROJECT_ROOT / "content"
     )
 
     GITHUB_REPO = environ.get(
@@ -24,9 +24,12 @@ class Config:
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 
     FREEZER_DESTINATION = environ.get(
-        "B_IO_BUILD_PATH", PROJECT_ROOT.joinpath("build")
+        "B_IO_BUILD_PATH", PROJECT_ROOT / "build"
     )
     FREEZER_IGNORE_MIMETYPE_WARNINGS = True
+
+    WEBPACK_MANIFEST_PATH = STATIC_FOLDER / "manifest.json"
+    WEBPACK_ASSETS_URL = STATIC_FOLDER
 
     WEBMENTION_TOKEN = environ.get("B_IO_WEBMENTION_TOKEN")
     B_IO_WEBMENTION_DOMAIN = environ.get("B_IO_WEBMENTION_DOMAIN")

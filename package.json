@@ -1,29 +1,41 @@
 {
-  "scripts": {
-    "build": "gulp set-env cloneNotebooks build flaskFreezeNetlify",
-    "deploy": "netlify deploy --prod --dir=build/"
-  },
-  "dependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.7.0",
+  "name": "b_io",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "autoprefixer": "^9.5.0",
+    "babel-loader": "^8.0.5",
     "bourbon": "^5.1.0",
-    "bourbon-neat": "^3.0.0",
-    "browser-sync": "^2.24.7",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^8.0.0",
-    "gulp-commonjs": "^0.1.0",
-    "gulp-env": "^0.4.0",
-    "gulp-git": "^2.8.0",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-ttf2eot": "^1.1.2",
-    "gulp-ttf2woff": "^1.1.1",
-    "gulp-ttf2woff2": "^2.0.2",
-    "netlify-cli": "^2.2.0",
-    "run-sequence": "^2.2.0",
-    "shave": "^2.4.0"
-  }
+    "bourbon-neat": "^3.0.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "image-webpack-loader": "^4.6.0",
+    "img-loader": "^3.0.1",
+    "manifest-revision-webpack-plugin": "^0.4.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-csso": "^3.0.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "scripts": {
+    "dev": "webpack --mode development",
+    "buildAssets": "webpack --mode production",
+    "hot": "webpack-dev-server --mode development",
+    "flaskRun": "pipenv run flask run",
+    "flaskFreeze": "flask freeze",
+    "cloneNotebooks": "rm -fr notebooks && git clone https://github.com/myles/braithwaite.io.git ./notebooks",
+    "run": "npm-run-all --parallel hot flaskRun",
+    "build": "npm-run-all cloneNotebooks buildAssets flaskFreeze"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

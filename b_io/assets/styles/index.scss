@@ -1,20 +1,20 @@
-@import 'bourbon/core/bourbon';
-@import 'bourbon-neat/core/neat';
+@import '~bourbon/core/bourbon';
+@import '~bourbon-neat/core/neat';
 
-@import 'abstract/vars';
+@import './abstract/vars';
 
-// @import 'base/font-faces';
-@import 'base/base';
-@import 'base/container';
+// @import './base/font-faces';
+@import './base/base';
+@import './base/container';
 
-@import 'components/btn';
-@import 'components/dataframe';
-@import 'components/footer';
-@import 'components/highlight';
-@import 'components/jupyter';
-@import 'components/page';
-@import 'components/site-title';
+@import './components/btn';
+@import './components/dataframe';
+@import './components/footer';
+@import './components/highlight';
+@import './components/jupyter';
+@import './components/page';
+@import './components/site-title';
 
-@import 'pages/404';
-@import 'pages/home';
-@import 'pages/notebook';
+@import './pages/404';
+@import './pages/home';
+@import './pages/notebook';

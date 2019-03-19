@@ -1,3 +1,6 @@
+@import '../abstract/vars';
+@import '../base/container';
+
 .c-site-title {
   @extend %container;
 

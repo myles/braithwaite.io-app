@@ -1,3 +1,6 @@
+@import '../abstract/vars';
+@import '../base/container';
+
 .b-home {
   @extend %container;
 

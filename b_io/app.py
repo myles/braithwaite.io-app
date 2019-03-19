@@ -4,7 +4,7 @@ from flask import Flask, render_template
 
 from b_io import __version__
 from b_io import commands, views
-from b_io.extensions import debug_toolbar
+from b_io.extensions import debug_toolbar, webpack
 from b_io.settings import ProdConfig
 
 
@@ -31,6 +31,7 @@ def create_app(config_obj=ProdConfig):
 def register_extensions(app):
     """Register Flask extensions."""
     debug_toolbar.init_app(app)
+    webpack.init_app(app)
 
     return None
 

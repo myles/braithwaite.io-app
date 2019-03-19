@@ -1,3 +1,11 @@
+@import '~bourbon/core/bourbon';
+@import '~bourbon-neat/core/neat';
+
+@import '../abstract/vars';
+@import '../base/container';
+
+@import './highlight';
+
 .c-jupyter {
   margin-top: 2rem;
   margin-bottom: 2rem;

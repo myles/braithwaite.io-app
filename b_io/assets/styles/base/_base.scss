@@ -1,3 +1,7 @@
+@import '~bourbon/core/bourbon';
+
+@import '../abstract/vars';
+
 html {
   background: $action-colour;
   font-family: $font-family-serif;
