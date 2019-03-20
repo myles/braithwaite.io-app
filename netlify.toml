@@ -1,5 +1,5 @@
 [build]
-  command = "npm run-script build"
+  command = "npm run-script cloneNotebooks && npm run-script buildAssets && npm run-script flaskFreeze"
   publish = "build"
 
 [build.environment]
