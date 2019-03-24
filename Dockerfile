@@ -1,6 +1,9 @@
-FROM netlify/build
+FROM netlify/build:xenial
 
 WORKDIR /opt/repo
 COPY ./ ./
 
-RUN ./test-tools/test-build.sh ./ 'npm run build'
+RUN npm --version
+
+RUN build 'npm run build'
+
