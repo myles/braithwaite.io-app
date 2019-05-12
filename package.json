@@ -6,7 +6,7 @@
     "@babel/preset-env": "7.4.4",
     "@ibm/plex": "1.4.1",
     "autoprefixer": "9.5.1",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.0.6",
     "bourbon": "5.1.0",
     "bourbon-neat": "3.0.1",
     "css-loader": "2.1.1",
