@@ -15,6 +15,7 @@ requests = "*"
 python-dateutil = "*"
 flask-webpack = "*"
 python-dotenv = "*"
+sentry-sdk = "*"
 
 [required]
 python_version = ">=3.6"
