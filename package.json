@@ -7,7 +7,7 @@
     "@ibm/plex": "2.0.0",
     "autoprefixer": "9.6.1",
     "babel-loader": "8.0.6",
-    "bourbon": "5.1.0",
+    "bourbon": "6.0.0",
     "bourbon-neat": "3.0.1",
     "css-loader": "2.1.1",
     "file-loader": "4.0.0",
