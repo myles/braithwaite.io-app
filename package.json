@@ -11,7 +11,7 @@
     "bourbon-neat": "3.0.1",
     "css-loader": "2.1.1",
     "file-loader": "4.0.0",
-    "image-webpack-loader": "5.0.0",
+    "image-webpack-loader": "8.0.0",
     "img-loader": "3.0.1",
     "manifest-revision-webpack-plugin": "0.4.1",
     "mini-css-extract-plugin": "0.7.0",
